@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Receiver - Fund Transfer</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Subtle gradient for the background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2a5298;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .user-list li {
+            background-color: #f2f2f2;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-list li:hover {
+            background-color: #e6e6e6;
+        }
+
+        .user-link {
+            text-decoration: none;
+            color: #2a5298;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .user-link:hover {
+            color: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Receiver for Fund Transfer</h1>
+
+        <ul class="user-list">
+            {% for user in users %}
+                <li>
+                    <a href="{% url 'fund_transfer' receiver_id=user.id %}" class="user-link">
+                        Transfer to {{ user.username }} 
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

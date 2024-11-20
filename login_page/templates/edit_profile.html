@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        /* You can reuse your existing styles here, for consistency with the login and dashboard pages */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .edit-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .edit-container h2 {
+            color: #2a5298;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f5f7fa;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #2a5298;
+            color: white;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1e3c72;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="edit-container">
+    <h2>Edit Profile</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Username Field -->
+        <input type="text" name="username" value="{{ user.username }}" class="input-field" required><br>
+
+        <!-- Email Field -->
+        <input type="email" name="email" value="{{ user.email }}" class="input-field" required><br>
+
+        <!-- Password Field -->
+        <input type="password" name="password" class="input-field" placeholder="New password (leave blank to keep current)"><br>
+
+        <button type="submit" class="btn">Update Profile</button>
+    </form>
+</div>
+
+</body>
+</html>

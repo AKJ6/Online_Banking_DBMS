@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Transfer - {{ receiver.username }}</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Subtle gradient for the background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2a5298;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2a5298;
+            color: white;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e3c72;
+        }
+
+        .currency {
+            font-size: 18px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transfer funds to {{ receiver.username }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="amount">Enter Amount (₹):</label>
+            <input type="number" name="amount" min="0" step="0.01" required>
+
+            <button type="submit">Transfer</button>
+        </form>
+    </div>
+</body>
+</html>

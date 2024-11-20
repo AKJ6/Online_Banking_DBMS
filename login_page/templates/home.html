@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Online Banking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f3f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: #2a5298;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            color: #2a5298;
+        }
+
+        .content p {
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #2a5298;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #1e3c72;
+        }
+
+        footer {
+            background-color: #2a5298;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Welcome, {{ username }}</h1>
+    <p>Email: {{ email }}</p>
+    <p>Balance: ₹{{ balance }}</p>
+    <p>Loan: ₹{{ loan }}</p>
+</div>
+
+<div class="content">
+    <h2>Account Information</h2>
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Balance:</strong> ₹{{ balance }}</p>
+    <p><strong>Loan Amount:</strong> ₹{{ loan }}</p>
+    <br>
+    
+    <br>
+    <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'fund_transfer' receiver_id=1 %}" class="btn">Transfer Funds</a>
+</div>
+
+<footer>
+    <p>&copy; {{ current_year }} Online Banking. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
